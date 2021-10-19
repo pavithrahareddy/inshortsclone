@@ -6,18 +6,18 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 //components
 import Article from './Article';
 
-const Articles = () => {
+const Articles = (category) => {
 
     const [news, setNews] = useState([]);
     const [page, setPage] = useState(0);
 
-    useEffect(() => {
-        const dailyNews = async () => {
-            const response = await getNews(page);
-            console.log(response);
-            console.log(new Set([...news, ...response.data["data"]]));
-            setNews([...new Set([...news, ...response.data["data"]])]);
-        }
+    const dailyNews = async (category = "all") => {
+        const response = await getNews(page,category);
+        console.log(new Set([...news, ...response.data["data"]]));
+        setNews([...new Set([...news, ...response.data["data"]])]);
+    }
+
+    useEffect(() => {   
         dailyNews();
     }, [page])
 
@@ -25,7 +25,10 @@ const Articles = () => {
         console.log(news);
     }, [news])
 
+
+
     return (
+        
         <InfiniteScroll
             dataLength={news.length}
             next={() => setPage(page => page + 1)}
@@ -33,7 +36,8 @@ const Articles = () => {
         >
             {
                 news.map(article => (
-                    <Article article={article} />
+                    <Article article={article}  />
+                    
                 ))
             }
         </InfiniteScroll>

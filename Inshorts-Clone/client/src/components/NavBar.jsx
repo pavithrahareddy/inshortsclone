@@ -1,48 +1,49 @@
-// import { Box, makeStyles, Typography } from '@material-ui/core';
-// import Articles from './components/Articles';
+import {  makeStyles, Box } from '@material-ui/core';
+import { Category, Menu } from '@material-ui/icons'
+import { Button } from '@material-ui/core';
+import Articles from './Articles';
+import { useState } from 'react';
 
-// const useStyles = makeStyles(theme => ({
-//     container: {
-//         background: '#f44336',
-//         color: '#FFFFFF',
-//         display: 'flex',
-//         alignItems: 'center',
-//         height: 48,
-//         marginBottom: 30,
-//         [theme.breakpoints.down('md')]: {
-//             display: 'none'
-//         }
-//     },
-//     logo: {
-//         height: 34,
-//         '&:last-child': {
-//             margin: '0 50px 0 20px'
-//         }
-//     },
-//     text: {
-//         fontSize: 14,
-//         fontWeight: 300,
-//         marginLeft: 50,
-//         fontFamily: "'Roboto',sans-serif",
-//     }
-// }))
-
-// const NavBar = () => {
-//     const classes = useStyles();
+const useStyles = makeStyles({
+    header: {
+        background: '#000',
+        height: 500,
+        display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: "10px 30px"
     
+    },
+    buttons:{
+        margin: "0 10px",
+        background: "#f44336",
+        color: "#fff"
+    }
     
+})
 
-//     return (
-//         <Box className={classes.container}>
-//             <Typography className={classes.text}>
-//                 For the best experience use <b>inshorts</b> app on your smartphone
-//             </Typography>
-//             <Box style={{marginLeft: 'auto'}}>
-//                <button onclick="myFunction()">Click me</button>
-                
-//             </Box>
-//         </Box>
-//     )
-// }
+const NavBar = () => {
+    const classes = useStyles();
 
-// export default NavBar;
+    function ActionLink(cat) {
+        alert(cat);
+        
+    }
+
+    return (
+        <Box className={classes.header}>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {ActionLink("all");}}>All</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('world');}}>World</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('national');}}>National</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('politics');}}>Politics</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('science');}}>Science</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('entertainment');}}>Entertainment</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('sports');}}>Sports</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('technology');}}>Technology</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('bussiness');}}>Bussiness</Button>
+            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {alert('startup');}}>Startup</Button>
+        </Box>
+    )
+}
+
+export default NavBar;
