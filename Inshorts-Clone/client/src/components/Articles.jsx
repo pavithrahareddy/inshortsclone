@@ -14,8 +14,9 @@ const Articles = () => {
     useEffect(() => {
         const dailyNews = async () => {
             const response = await getNews(page);
-            console.log(new Set([...news, ...response.data]));
-            setNews([...new Set([...news, ...response.data])]);
+            console.log(response);
+            console.log(new Set([...news, ...response.data["data"]]));
+            setNews([...new Set([...news, ...response.data["data"]])]);
         }
         dailyNews();
     }, [page])

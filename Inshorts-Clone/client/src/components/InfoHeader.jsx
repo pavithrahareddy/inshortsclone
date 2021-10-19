@@ -38,8 +38,9 @@ const InfoHeader = () => {
                 For the best experience use <b>inshorts</b> app on your smartphone
             </Typography>
             <Box style={{marginLeft: 'auto'}}>
-                <img src={appleStore} alt="apple store"  className={classes.logo} />
-                <img src={googleStore} alt="google store"  className={classes.logo}  />
+                <a href="https://apps.apple.com/us/app/news-in-shorts/id892146527"><img src={appleStore} alt="apple store"  className={classes.logo} /></a>
+                <a href="https://play.google.com/store/apps/details?id=com.nis.app&referrer=utm_source=inshorts%20mobile"><img src={googleStore} alt="google store"  className={classes.logo}  /></a>
+                
             </Box>
         </Box>
     )
