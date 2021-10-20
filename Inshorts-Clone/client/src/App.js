@@ -6,12 +6,11 @@ import { Box, makeStyles } from '@material-ui/core';
 import Header from './components/Header';
 import InfoHeader from './components/InfoHeader';
 import Articles from './components/Articles';
-import NavBar from './components/NavBar';
 
 const useStyles = makeStyles(theme => ({
   container: {
     marginTop: 140,
-    width: '59%',
+    width: '70%',
     margin: '0 auto',
     [theme.breakpoints.down('md')]: {
       width: '75%'

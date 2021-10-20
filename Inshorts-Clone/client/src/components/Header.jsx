@@ -2,7 +2,6 @@
 import { AppBar, Toolbar, makeStyles, Box } from '@material-ui/core';
 import { Menu } from '@material-ui/icons'
 import { Bookmarks } from '@material-ui/icons';
-import NavBar from './NavBar';
 import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -41,7 +40,7 @@ const Header = () => {
                 <img src={url} alt="logo" className={classes.image} />
                 <Bookmarks className={classes.menu} />
             </Toolbar>
-            <NavBar/>
+            {/* <NavBar/> */}
         </AppBar>
     )
 }
