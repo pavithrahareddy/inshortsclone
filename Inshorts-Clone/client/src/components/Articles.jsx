@@ -32,13 +32,16 @@ const Articles = () => {
     const [news, setNews] = useState([]);
     const [page, setPage] = useState(0);
 
-    
-
     const dailyNews = async (category = "all") => {
         console.log(category);
         const response = await getNews(page,category);
-        console.log(new Set([...news, ...response.data["data"]]));
-        setNews([...new Set([...news, ...response.data["data"]])]);
+        console.log(response.data["data"]);
+        setNews([]);
+        // created a new array and passed json 
+        let newArr = [...response.data["data"]];
+        console.log(newArr);
+        // set the new array with updated data
+        setNews(newArr);
     }
 
     useEffect(() => {   
@@ -69,8 +72,7 @@ const Articles = () => {
             <InfiniteScroll
             dataLength={news.length}
             next={() => setPage(page => page + 1)}
-            hasMore={true}
-        >
+            hasMore={true}>
             {
                 news.map(article => (
                     <Article article={article}  />
