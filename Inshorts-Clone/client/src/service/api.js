@@ -4,6 +4,7 @@ const URL = 'https://inshorts-news.vercel.app/'
 
 export const getNews = async (page,category, size = 5) => {
   try {
+    console.log(category);
     return await axios.get(`/${category}`, {
       headers: {
         'Access-Control-Allow-Origin': '*',

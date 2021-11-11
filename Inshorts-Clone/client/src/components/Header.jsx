@@ -3,6 +3,8 @@ import { AppBar, Toolbar, makeStyles, Box } from '@material-ui/core';
 import { Menu } from '@material-ui/icons'
 import { Bookmarks } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import React, { useState } from 'react';
 
 const useStyles = makeStyles({
     header: {
@@ -33,10 +35,54 @@ const Header = () => {
     const classes = useStyles();
     const url = 'https://assets.inshorts.com/website_assets/images/logo_inshorts.png';
 
+    function responseGoogle (response){
+        console.log(response);
+        console.log(response.profileObj);
+    }
+
+    const [showloginButton, setShowloginButton] = useState(true);
+    const [showlogoutButton, setShowlogoutButton] = useState(false);
+
+    const onLoginSuccess = (res) => {
+        console.log('Login Success:', res.profileObj);
+        setShowloginButton(false);
+        setShowlogoutButton(true);
+    };
+
+    const onLoginFailure = (res) => {
+        console.log('Login Failed:', res);
+    };
+
+    const onSignoutSuccess = () => {
+        alert("You have been logged out successfully");
+        // console.clear();
+        setShowloginButton(true);
+        setShowlogoutButton(false);
+    };
     return (
         <AppBar className={classes.header}>
             <Toolbar>
-            <Button className={classes.buttons} variant="contained" color="success" onClick={() => {}}>Login</Button>
+                <div>
+                { showloginButton ?
+                    <GoogleLogin
+                    clientId="70498144699-lm9phgum53khgsarok4v2pdn8mlhrd4a.apps.googleusercontent.com"
+                    buttonText="Login"
+                    onSuccess={onLoginSuccess}
+                    onFailure={onLoginFailure}
+                    cookiePolicy={'single_host_origin'}
+
+                    /> : null}
+
+{ showlogoutButton ?
+                    <GoogleLogout
+                    clientId="70498144699-lm9phgum53khgsarok4v2pdn8mlhrd4a.apps.googleusercontent.com"
+                    buttonText="Logout"
+                    onLogoutSuccess={onSignoutSuccess}
+                    >
+    </GoogleLogout>: null
+            }
+                </div>
+            {/* <Button className={classes.buttons} variant="contained" color="success" onClick={() => {}}>Login</Button> */}
                 <img src={url} alt="logo" className={classes.image} />
                 <Bookmarks className={classes.menu} />
             </Toolbar>
