@@ -1,5 +1,6 @@
 import { Box, makeStyles } from '@material-ui/core'
 
+
 //components
 import Header from './components/Header'
 import InfoHeader from './components/InfoHeader'
