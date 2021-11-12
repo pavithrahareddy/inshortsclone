@@ -1,7 +1,8 @@
 
-import { Card, CardContent, Typography, Box, makeStyles, Grid } from "@material-ui/core";
+import { Card, CardContent, Typography, Box, makeStyles, Grid, Button } from "@material-ui/core";
 import { Share } from "@material-ui/icons";
 import { AddBox } from "@material-ui/icons";
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
     component: {
@@ -67,6 +68,17 @@ const useStyles = makeStyles(theme => ({
 
 const Article = ({ article }) => {
     const classes = useStyles();
+
+function handleClick(event){
+    event.preventDefault();
+    console.log(article);
+    const newNote = {
+        title:article.title,
+        content:article.decription
+    }
+    axios.post('http://localhost:3001/create',newNote)
+}
+
     return (
         <Card className={classes.component}>
             <CardContent className={classes.container}>
@@ -90,6 +102,7 @@ const Article = ({ article }) => {
                 </Grid>
                 <Share className={classes.menu}></Share>
                 <AddBox className={classes.menu} />
+                <button onClick={handleClick} >Add</button>
             </CardContent>
         </Card>
     )

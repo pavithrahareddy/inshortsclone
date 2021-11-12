@@ -1,13 +1,16 @@
 {
+  
   "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "proxy": "http://localhost:3001",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node server.js"
   },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {
