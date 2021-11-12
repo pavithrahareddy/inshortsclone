@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import Note from "../model/noteModel";
+// import Note from "../model/noteModel";
 
 // const Note = require('../model/noteModel')
 
@@ -13,6 +13,10 @@ router.route('/create').post((req, res) => {
   })
 
   newNote.save()
+})
+
+router.route("/notes").get((req,res)=>{
+  Note.find().then(foundNotes => res.json(foundNotes))
 })
 
 // module.exports = router
