@@ -93,8 +93,11 @@ const Header = () => {
                 </div>
             {/* <Button className={classes.buttons} variant="contained" color="success" onClick={() => {}}>Login</Button> */}
                 <img src={url} alt="logo" className={classes.image} />
+                
                 <NavLink replace to="/"><HomeOutlined className={classes.menu}/></NavLink>
-                <NavLink replace to="/bookmarks"><Bookmarks className={classes.menu} /></NavLink>
+                { showlogoutButton ?<NavLink replace to="/bookmarks"><Bookmarks className={classes.menu} /></NavLink>: null
+            }
+                
             </Toolbar>
             {/* <NavBar/> */}
         </AppBar>
