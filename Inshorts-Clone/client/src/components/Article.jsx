@@ -82,6 +82,8 @@ function handleClick(event){
     axios.post('http://localhost:3001/create',newNote)
 }
 
+const arlink = article["inshorts-link"];
+
     return (
         <Card className={classes.component}>
             <CardContent className={classes.container}>
@@ -96,7 +98,7 @@ function handleClick(event){
                         </Typography>
                         <Typography className={classes.description}>{article.decription}</Typography>
                         <Typography className={classes.publisher}>
-                             <a href={article.link} target='_blank'>Click here</a> to read more
+                             <a href={arlink} target='_blank'>Click here</a> to read more
                              
                         </Typography>
                     </Grid>
