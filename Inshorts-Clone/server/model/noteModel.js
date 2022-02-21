@@ -1,13 +1,18 @@
 // const mongoose = require("mongoose");
 import mongoose from 'mongoose'
-
-const notesSchema = {
-    title:String,
-    content:String
-}
+const Schema =mongoose.Schema;
+const notesSchema = new Schema({
+    title:{
+        type:String,
+    },
+    content:{
+        type:String,
+  
+    },
+})
 
 const Note = mongoose.model("Note",notesSchema);
 
-// module.exports = Note;
+module.exports = Note;
 
-export default Note;
+// export default Note;

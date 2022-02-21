@@ -1,10 +1,14 @@
 
-import { AppBar, Toolbar, makeStyles, Box } from '@material-ui/core';
+import { AppBar, Toolbar, makeStyles, Box, Link } from '@material-ui/core';
 import { Menu } from '@material-ui/icons'
 import { Bookmarks } from '@material-ui/icons';
 import { Button } from '@material-ui/core';
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import React, { useState } from 'react';
+import { HomeOutlined } from '@material-ui/icons';
+
+
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
     header: {
@@ -15,6 +19,7 @@ const useStyles = makeStyles({
         color: '#f44336',
         height: 100
     },
+    
     image: {
         height: 65,
         margin: 'auto',
@@ -59,14 +64,18 @@ const Header = () => {
         setShowloginButton(true);
         setShowlogoutButton(false);
     };
+
     return (
         <AppBar className={classes.header}>
             <Toolbar>
                 <div>
                 { showloginButton ?
-                    <GoogleLogin
+                    <GoogleLogin 
                     clientId="70498144699-lm9phgum53khgsarok4v2pdn8mlhrd4a.apps.googleusercontent.com"
                     buttonText="Login"
+                    backgroundColor="#f44336"
+                    
+
                     onSuccess={onLoginSuccess}
                     onFailure={onLoginFailure}
                     cookiePolicy={'single_host_origin'}
@@ -84,7 +93,11 @@ const Header = () => {
                 </div>
             {/* <Button className={classes.buttons} variant="contained" color="success" onClick={() => {}}>Login</Button> */}
                 <img src={url} alt="logo" className={classes.image} />
-                <Bookmarks className={classes.menu} />
+                
+                <NavLink replace to="/"><HomeOutlined className={classes.menu}/></NavLink>
+                { showlogoutButton ?<NavLink replace to="/bookmarks"><Bookmarks className={classes.menu} /></NavLink>: null
+            }
+                
             </Toolbar>
             {/* <NavBar/> */}
         </AppBar>
